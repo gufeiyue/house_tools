@@ -1,0 +1,101 @@
+{% extends 'tax/base.html' %}
+
+{% block content %}
+
+
+    <header class='demos-header' xmlns="http://www.w3.org/1999/html">
+    <h1 class="demos-title" style="font-size: 20px">税费计算结果</h1>
+    </header>
+
+    <div class="weui-form-preview">
+
+      <div class="weui-form-preview__hd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">卖方总计:</label>
+          <em class="weui-form-preview__value">¥{{ seller_total }}元</em>
+        </div>
+      </div>
+
+      <div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">个人所得税:</label>
+          <span class="weui-form-preview__value">{{ personal_tax }}元</span>
+        </div>
+{#        <div class="weui-form-preview__item">#}
+{#          <label class="weui-form-preview__label">个人所得税(差额):</label>#}
+{#          <span class="weui-form-preview__value">{{ margin_personal_income_tax }}元</span>#}
+{#        </div>#}
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">增值税:</label>
+          <span class="weui-form-preview__value">{{ total_vat }}元</span>
+        </div>
+      </div>
+        </br>
+    </div>
+
+    <div class="weui-form-preview">
+      <div class="weui-form-preview__hd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">买方总计:</label>
+          <em class="weui-form-preview__value">¥{{ buyer_total }}元</em>
+        </div>
+      </div>
+
+      <div class="weui-form-preview__bd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">契税:</label>
+          <span class="weui-form-preview__value">{{ total_deed_tax }}元</span>
+        </div>
+
+      </div>
+    </br>
+    </div>
+
+    <div class="weui-form-preview">
+      <div class="weui-form-preview__hd">
+        <div class="weui-form-preview__item">
+          <label class="weui-form-preview__label">合计税费(买+卖):</label>
+          <em class="weui-form-preview__value">¥{{ all_tax }}元</em>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+      <div class="weui-tabbar" style="position: fixed">
+
+        <a href="{{ url_for('tax.commercial_loan') }}" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="{{ url_for('static', filename='images/icon_nav_button.png') }}" alt="">
+          </div>
+          <p class="weui-tabbar__label">房贷</p>
+        </a>
+
+        <a href="{{ url_for('tax.tax') }}" class="weui-tabbar__item  weui-bar__item--on">
+          <div class="weui-tabbar__icon">
+            <img src="{{ url_for('static', filename='images/icon_nav_article.png') }}" alt="">
+          </div>
+          <p class="weui-tabbar__label">税费</p>
+        </a>
+
+        <a href="{{ url_for('tax.purchase') }}" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="{{ url_for('static', filename='images/icon_nav_msg.png') }}" alt="">
+          </div>
+          <p class="weui-tabbar__label">限购</p>
+        </a>
+
+        <a href="{{ url_for('tax.test4') }}" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="{{ url_for('static', filename='images/icon_nav_cell.png') }}" alt="">
+          </div>
+          <p class="weui-tabbar__label">预留</p>
+        </a>
+
+      </div>
+
+
+{% endblock %}

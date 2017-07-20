@@ -1,0 +1,124 @@
+{% extends 'tax/base.html' %}
+
+{% block content %}
+
+
+<div class="weui-tab">
+    <div class="weui-tab__bd">
+        <div class="weui-navbar">
+            <a class="weui-navbar__item weui-bar__item--on" href="{{ url_for('tax.commercial_loan') }}">商业贷款</a>
+            <a class="weui-navbar__item" href="{{ url_for('tax.provident_fund_loan') }}">公积金贷款</a>
+            <a class="weui-navbar__item" href="{{ url_for('tax.combination_loan') }}">组合贷款</a>
+        </div>
+
+        <div class="weui-tab__bd">
+            <form action="{{ url_for('tax.commercial_calc') }}" method="POST">
+                <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">贷款总额(万)</label>
+                    </div>
+                    <div class="weui-cell__bd">
+                        <input class="weui-input" name="loan_total" type="number" step="0.01" style="text-align:right" placeholder="请输入贷款总额 (万元)" required="" />
+                    </div>
+                </div>
+                <div class="weui-cells" style="margin-top: 0">
+                    <div class="weui-cell weui-cell_select weui-cell_select-after">
+                        <div class="weui-cell__hd">
+                            <label for="" class="weui-label">贷款年限</label>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <select class="weui-select" name="loan_year" style="direction: rtl">
+                                <option value="30">30年</option>
+                                <option value="29">29年</option>
+                                <option value="28">28年</option>
+                                <option value="27">27年</option>
+                                <option value="26">26年</option>
+                                <option value="25">25年</option>
+                                <option value="24">24年</option>
+                                <option value="23">23年</option>
+                                <option value="22">22年</option>
+                                <option value="21">21年</option>
+                                <option value="20">20年</option>
+                                <option value="19">19年</option>
+                                <option value="18">18年</option>
+                                <option value="17">17年</option>
+                                <option value="16">16年</option>
+                                <option value="15">15年</option>
+                                <option value="14">14年</option>
+                                <option value="13">13年</option>
+                                <option value="12">12年</option>
+                                <option value="11">11年</option>
+                                <option value="10">10年</option>
+                                <option value="9">9年</option>
+                                <option value="8">8年</option>
+                                <option value="7">7年</option>
+                                <option value="6">6年</option>
+                                <option value="5">5年</option>
+                                <option value="4">4年</option>
+                                <option value="3">3年</option>
+                                <option value="2">2年</option>
+                                <option value="1">1年</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="weui-cell weui-cell_select weui-cell_select-after">
+                        <div class="weui-cell__hd">
+                            <label for="" class="weui-label">贷款利率</label>
+                        </div>
+                        <div class="weui-cell__bd">
+                            <select class="weui-select" name="loan_rate" style="direction: rtl">
+                                <option value="4.9">最新基准利率 | 4.9%</option>
+                                <option value="3.43">7折利率 | 3.43%</option>
+                                <option value="3.92">8折利率 | 3.92%</option>
+                                <option value="4.067">8.3折利率| 4 .067%</option>
+                                <option value="4.165">8.5折利率| 4 .165%</option>
+                                <option value="4.312">8.8折利率| 4 .312%</option>
+                                <option value="4.41">9折利率 | 4.41%</option>
+                                <option value="4.655">9.5折利率| 4 .655%</option>
+                                <option value="5.39">1.1倍利率 | 5.39%</option>
+                                <option value="5.88">1.2倍利率 | 5.88%</option>
+                                <option value="6.37">1.3倍利率 | 6.37%</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demos-content-padded" style="padding-bottom: 60px;">
+                    <button class="weui-btn weui-btn_primary" type="submit">开始计算</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="weui-tabbar">
+            <a href="{{ url_for('tax.commercial_loan') }}" class="weui-tabbar__item weui-bar__item--on">
+                <div class="weui-tabbar__icon">
+                    <img src="{{ url_for('static', filename='images/icon_nav_button.png') }}" alt="" />
+                </div>
+                <p class="weui-tabbar__label">房贷</p>
+            </a>
+            <a href="{{ url_for('tax.tax') }}" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="{{ url_for('static', filename='images/icon_nav_article.png') }}" alt="" />
+                </div>
+                <p class="weui-tabbar__label">税费</p>
+            </a>
+            <a href="{{ url_for('tax.purchase') }}" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="{{ url_for('static', filename='images/icon_nav_msg.png') }}" alt="" />
+                </div>
+                <p class="weui-tabbar__label">限购</p>
+            </a>
+            <a href="{{ url_for('tax.test4') }}" class="weui-tabbar__item">
+                <div class="weui-tabbar__icon">
+                    <img src="{{ url_for('static', filename='images/icon_nav_cell.png') }}" alt="" />
+                </div>
+                <p class="weui-tabbar__label">预留</p>
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+

@@ -1,0 +1,51 @@
+{% extends 'tax/base.html' %}
+
+{% block content %}
+    <div class="weui-tab">
+
+
+
+      <div class="weui-tab__bd">
+        <h1>页面4</h1>
+      </div>
+
+
+
+
+
+
+
+      <div class="weui-tabbar">
+
+        <a href="{{ url_for('tax.combination_loan') }}" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="{{ url_for('static', filename='images/icon_nav_button.png') }}" alt="">
+          </div>
+          <p class="weui-tabbar__label">房贷</p>
+        </a>
+
+        <a href="{{ url_for('tax.tax') }}" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="{{ url_for('static', filename='images/icon_nav_article.png') }}" alt="">
+          </div>
+          <p class="weui-tabbar__label">税费</p>
+        </a>
+
+        <a href="{{ url_for('tax.purchase') }}" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="{{ url_for('static', filename='images/icon_nav_msg.png') }}" alt="">
+          </div>
+          <p class="weui-tabbar__label">限购</p>
+        </a>
+
+        <a href="{{ url_for('tax.test4') }}" class="weui-tabbar__item weui-bar__item--on">
+          <div class="weui-tabbar__icon">
+            <img src="{{ url_for('static', filename='images/icon_nav_cell.png') }}" alt="">
+          </div>
+          <p class="weui-tabbar__label">预留</p>
+        </a>
+
+      </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>平米工具</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+{#    <link rel="stylesheet" href="../../static/css/weui.min.css">#}
+{#    <link rel="stylesheet" href="../../static/css/jquery-weui.min.css">#}
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/demos.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/jquery-labelauty.css') }}">
+
+{##}
+{##}
+{#    <link rel="stylesheet" href="../../static/css/demos.css">#}
+{#    <link rel="stylesheet" href="../../static/css/jquery-labelauty.css">#}
+
+
+    {% block css %} {% endblock %}
+
+  </head>
+
+  <body ontouchstart>
+
+
+
+    {% block content %} {% endblock %}
+
+
+
+
+{#    <script src="../../static/js/jquery-2.1.4.min.js"></script>#}
+{#    <script src="../../static/js/jquery-weui.min.js"></script>#}
+{#    <script src="../../static/js/fastclick.js"></script>#}
+
+
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.js"></script>
+
+
+    <script src="{{ url_for('static', filename='js/jquery-labelauty.js') }}"></script>
+
+
+{#    <script src="../../static/js/jquery-labelauty.js"></script>#}
+
+
+    {% block script %} {% endblock %}
+
+  </body>
+</html>

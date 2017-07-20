@@ -1,0 +1,244 @@
+{% extends 'tax/base.html' %}
+
+
+{% block css %}
+  <link href="http://g.alicdn.com/sj/dpl/1.5.1/css/sui.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+ <div class="weui-tab">
+     <div class="weui-navbar">
+        <a class="weui-navbar__item weui-bar__item--on" href="#debj"> 等额本金 </a>
+        <a class="weui-navbar__item" href="#debx"> 等额本息 </a>
+     </div>
+     <div class="weui-tab__bd" style="position: relative; -webkit-overflow-scrolling: touch;">
+        <div id="debj" class="weui-tab__bd-item weui-tab__bd-item--active">
+         <div id="container1" style="min-width:100%;height:250px;"></div>
+         <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label"><i class="fa fa-home fa-2" aria-hidden="true" style="color: #058DC7"></i> 贷款总额:</label>
+                <em class="weui-form-preview__value">{{ debj_dict.loan_total }}元</em>
+             </div>
+            </div>
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label"><i class="fa fa-percent" aria-hidden="true" style="color: #50B432"></i> 支付利息:</label>
+                <em class="weui-form-preview__value">{{ debj_dict.debj_total_interest }}元</em>
+             </div>
+            </div>
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">还款总额:</label>
+                <em class="weui-form-preview__value">{{ debj_dict.debj_total }}元</em>
+             </div>
+            </div>
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">利率:</label>
+                <em class="weui-form-preview__value">{{ debj_dict.annual_rate }}%</em>
+             </div>
+            </div>
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">首月月供:</label>
+                <em class="weui-form-preview__value">{{ debj_dict.debj_first_month }}元</em>
+             </div>
+            </div>
+            <br />
+         </div>
+         <div class="weui-cell" style="padding: 0 0 0 0">
+            <div class="weui-cell__hd" style="width: 100%">
+             <table class="sui-table table-bordered-simple">
+                <thead>
+                 <tr>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">期数</th>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">每月还款</th>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">每月本金</th>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">每月利息</th>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">剩余贷款</th>
+                 </tr>
+                </thead>
+                <tbody>
+                    {% for average_capital in average_capital_list %}
+                 <tr class="gradeA odd" role="row">
+                    <td class="center">{{ loop.index }}</td>
+                    <td class="center">{{ average_capital.monthly_total }}</td>
+                    <td class="center">{{ average_capital.monthly_principal }}</td>
+                    <td class="center">{{ average_capital.monthly_interest }}</td>
+                    <td class="center">{{ average_capital.residual_loan }}</td>
+                 </tr> {% endfor %}
+                </tbody>
+             </table>
+            </div>
+         </div>
+        </div>
+        <div id="debx" class="weui-tab__bd-item">
+         <div id="container2" style="min-width:100%;height:250px;"></div>
+         <div class="weui-form-preview">
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label"><i class="fa fa-home" aria-hidden="true" style="color: #058DC7"></i> 贷款总额:</label>
+                <em class="weui-form-preview__value">{{ debx_dict.loan_total }}元</em>
+             </div>
+            </div>
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label"><i class="fa fa-percent" aria-hidden="true" style="color: #50B432"></i> 支付利息:</label>
+                <em class="weui-form-preview__value">{{ debx_dict.debx_total_interest }}元</em>
+             </div>
+            </div>
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">还款总额:</label>
+                <em class="weui-form-preview__value">{{ debx_dict.debx_total }}元</em>
+             </div>
+            </div>
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">利率:</label>
+                <em class="weui-form-preview__value">{{ debx_dict.annual_rate }}%</em>
+             </div>
+            </div>
+            <div class="weui-form-preview__hd">
+             <div class="weui-form-preview__item">
+                <label class="weui-form-preview__label">首月月供:</label>
+                <em class="weui-form-preview__value">{{ debx_dict.debx_first_month }}元</em>
+             </div>
+            </div>
+            <br />
+         </div>
+         <div class="weui-cell" style="padding: 0 0 0 0">
+            <div class="weui-cell__hd" style="width: 100%">
+             <table class="sui-table table-bordered-simple">
+                <thead>
+                 <tr>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">期数</th>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">每月还款</th>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">每月本金</th>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">每月利息</th>
+                    <th class="text-center" style="background-color: #e3efd6; text-align: center">剩余贷款</th>
+                 </tr>
+                </thead>
+                <tbody>
+                    {% for average_interest in average_interest_list %}
+                 <tr class="gradeA odd" role="row">
+                    <td class="center">{{ loop.index }}</td>
+                    <td class="center">{{ average_interest.monthly_total }}</td>
+                    <td class="center">{{ average_interest.monthly_principal }}</td>
+                    <td class="center">{{ average_interest.monthly_interest }}</td>
+                    <td class="center">{{ average_interest.residual_loan }}</td>
+                 </tr> {% endfor %}
+                </tbody>
+             </table>
+            </div>
+         </div>
+        </div>
+     </div>
+ </div>
+
+{% endblock %}
+
+
+{% block script %}
+
+    <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+    <script type="text/javascript" src="http://g.alicdn.com/sj/dpl/1.5.1/js/sui.min.js"></script>
+
+<script>
+var chart1 = null; // 定义全局变量
+var chart2 = null; // 定义全局变量
+
+Highcharts.setOptions({
+        colors: ['#058DC7', '#50B432']
+    });
+
+$(document).ready(function() {
+    options1 = {
+        chart: {
+            renderTo: 'container1',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+        },
+        title: {
+            text: '本金利息占比'
+        },
+        tooltip: {
+            headerFormat: '{series.name}<br>',
+            pointFormat: '{point.name}: <b>{point.y}元</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                        width: '1px'
+                    }
+                }
+            }
+        },
+        credits: {
+            enabled: false     //不显示LOGO
+        },
+        series: [{
+            type: 'pie',
+            name: '本息占比',
+            data: [['贷款总额',    {{ debj_dict.loan_total }}],['支付利息',     {{ debj_dict.debj_total_interest }}]]
+        }]
+    };
+
+
+    options2 = {
+        chart: {
+            renderTo: 'container2',
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+        },
+        title: {
+            text: '本金利息占比'
+        },
+        tooltip: {
+            headerFormat: '{series.name}<br>',
+            pointFormat: '{point.name}: <b>{point.y}元</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                        width: '1px'
+                    }
+                }
+            }
+        },
+        credits: {
+            enabled: false     //不显示LOGO
+        },
+        series: [{
+            type: 'pie',
+            name: '本息占比',
+            data: [['贷款总额',    {{ debx_dict.loan_total }}],['支付利息',     {{ debx_dict.debx_total_interest }}]]
+        }]
+    };
+
+
+chart1 = new Highcharts.Chart(options1);
+chart2 = new Highcharts.Chart(options2);
+
+});
+
+</script>
+
+{% endblock %}

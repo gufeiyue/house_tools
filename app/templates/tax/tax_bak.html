@@ -1,0 +1,234 @@
+{% extends 'tax/base.html' %}
+
+{% block content %}
+
+    <header>
+      <h1 class="demos-title" style="font-size: 20px">税费计算</h1>
+    </header>
+
+    <div class="weui-tab">
+
+          <div class="weui-tab__bd" style="padding-bottom: 70px">
+
+
+              <form action="{{ url_for('tax.tax_cal') }}" method="POST">
+                <div class="weui-cells weui-cells_radio" style="margin-top: 0">
+                    <ul class="dowebok">
+                        <li style="display: inline-block"><input type="radio" name="radio" checked data-labelauty="视觉设计师"></li>
+                        <li style="display: inline-block"><input type="radio" name="radio" data-labelauty="交互设计师"></li>
+                        <li style="display: inline-block"><input type="radio" name="radio" data-labelauty="前端工程师"></li>
+                    </ul>
+                    </div>
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <label class="weui-label">房屋类型
+                            <button type="button" id='show-alert' class="weui-icon-info-circle" style="border: none; font-size: 18px"></button>
+                        </label>
+                    </div>
+                  </div>
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd">
+                        <ul class="dowebok">
+                        <li style="display: inline-block"><input type="radio" name="radio" data-labelauty="视觉设计师"></li>
+                        <li style="display: inline-block"><input type="radio" name="radio" data-labelauty="交互设计师"></li>
+                        <li style="display: inline-block"><input type="radio" name="radio" data-labelauty="前端工程师"></li>
+                    </ul>
+                    </div>
+                  </div>
+                  <div class="weui-cells weui-cells_radio" style="margin-top: 0">
+
+                    <label class="weui-cell weui-check__label" for="x11" style="padding-top: 2px; padding-bottom: 2px">
+                      <div class="weui-cell__bd">
+                          <div class="weui-cells__title">普通住宅</div>
+                      </div>
+                      <div class="weui-cell__ft">
+                        <input type="radio" class="weui-check" value="0" name="house_type" id="x11" checked="checked">
+                        <span class="weui-icon-checked"></span>
+                      </div>
+                    </label>
+
+                    <label class="weui-cell weui-check__label" for="x12" style="padding-top: 2px; padding-bottom: 2px">
+                      <div class="weui-cell__bd">
+                        <div class="weui-cells__title">非普通住宅</div>
+                      </div>
+                      <div class="weui-cell__ft">
+                        <input type="radio" name="house_type" value="1" class="weui-check" id="x12">
+                        <span class="weui-icon-checked"></span>
+                      </div>
+                    </label>
+
+                  </div>
+
+
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">房龄</label></div>
+                  </div>
+                  <div class="weui-cells weui-cells_radio" style="margin-top: 0">
+                    <label class="weui-cell weui-check__label" for="x13" style="padding-top: 2px; padding-bottom: 2px">
+                      <div class="weui-cell__bd">
+                          <div class="weui-cells__title">满5</div>
+                      </div>
+                      <div class="weui-cell__ft">
+                        <input type="radio" name="house_year" class="weui-check" value="5" id="x13" checked="checked">
+                        <span class="weui-icon-checked"></span>
+                      </div>
+                    </label>
+
+                    <label class="weui-cell weui-check__label" for="x14" style="padding-top: 2px; padding-bottom: 2px">
+                      <div class="weui-cell__bd">
+                        <div class="weui-cells__title">满2</div>
+                      </div>
+                      <div class="weui-cell__ft">
+                        <input type="radio" name="house_year" value="2" class="weui-check" id="x14">
+                        <span class="weui-icon-checked"></span>
+                      </div>
+                    </label>
+
+                      <label class="weui-cell weui-check__label" for="x15" style="padding-top: 2px; padding-bottom: 2px">
+                      <div class="weui-cell__bd">
+                        <div class="weui-cells__title">不满2</div>
+                      </div>
+                      <div class="weui-cell__ft">
+                        <input type="radio" name="house_year" value="0" class="weui-check" id="x15">
+                        <span class="weui-icon-checked"></span>
+                      </div>
+                    </label>
+                  </div>
+
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">房屋总价(万)</label></div>
+                    <div class="weui-cell__bd">
+                      <input class="weui-input" name="house_total" type="number" pattern="[0-9]*" style="text-align:right" placeholder="请输入房屋总价 (万元)" required>
+                    </div>
+
+                  </div>
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">房屋原价(万)</label></div>
+                    <div class="weui-cell__bd">
+                      <input class="weui-input" name="house_org" type="number" pattern="[0-9]*" style="text-align:right" placeholder="请输入房屋原价 (万元)" required>
+                    </div>
+
+                  </div>
+                  <div class="weui-cell">
+                    <div class="weui-cell__hd"><label class="weui-label">房屋面积(m²)</label></div>
+                    <div class="weui-cell__bd">
+                      <input class="weui-input" name="house_area" type="number" pattern="[0-9]*" style="text-align:right" placeholder="请输入房屋面积 (m²)" required>
+                    </div>
+
+                  </div>
+
+
+                  <div class="weui-cell weui-cell_switch">
+                    <div class="weui-cell__bd">买方首次购房</div>
+                    <div class="weui-cell__ft">
+                      <input class="weui-switch" name="buyerfirsthouse" data-switch="1" type="checkbox" checked="checked">
+                    </div>
+                  </div>
+                  <div class="weui-cell weui-cell_switch">
+                    <div class="weui-cell__bd">卖房唯一住房</div>
+                    <div class="weui-cell__ft">
+                      <input class="weui-switch" name="selleronlyhouse" data-switch="2" type="checkbox" checked="checked">
+                    </div>
+                  </div>
+                  <div class='demos-content-padded' style="padding-bottom: 60px;">
+                    <button class="weui-btn weui-btn_primary" type="submit"> 开始计算 </button>
+                  </div>
+              </form>
+          </div>
+
+
+
+
+
+
+
+
+          <div class="weui-tabbar" style="position: fixed">
+
+            <a href="{{ url_for('tax.commercial_loan') }}" class="weui-tabbar__item">
+              <div class="weui-tabbar__icon">
+                <img src="{{ url_for('static', filename='images/icon_nav_button.png') }}" alt="">
+              </div>
+              <p class="weui-tabbar__label">房贷</p>
+            </a>
+
+            <a href="{{ url_for('tax.tax') }}" class="weui-tabbar__item  weui-bar__item--on">
+              <div class="weui-tabbar__icon">
+                <img src="{{ url_for('static', filename='images/icon_nav_article.png') }}" alt="">
+              </div>
+              <p class="weui-tabbar__label">税费</p>
+            </a>
+
+            <a href="{{ url_for('tax.purchase') }}" class="weui-tabbar__item">
+              <div class="weui-tabbar__icon">
+                <img src="{{ url_for('static', filename='images/icon_nav_msg.png') }}" alt="">
+              </div>
+              <p class="weui-tabbar__label">限购</p>
+            </a>
+
+            <a href="{{ url_for('tax.test4') }}" class="weui-tabbar__item">
+              <div class="weui-tabbar__icon">
+                <img src="{{ url_for('static', filename='images/icon_nav_cell.png') }}" alt="">
+              </div>
+              <p class="weui-tabbar__label">预留</p>
+            </a>
+
+          </div>
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+
+    $(function(){
+	$(':radio').labelauty();
+});
+
+    $(document).on("click", "#show-alert", function() {
+        $.alert("范围 ------ 面积(m²) --- 总价(万)<br/>"+
+                "内环以内 ---- ≤140 ----- ≤450<br/>"+
+                "内外环之间 -- ≤140 ----- ≤310<br/>"+
+                "外环仕外 ---- ≤140 ----- ≤230", "普通住宅标准");
+      });
+
+    $("#house_year").select({
+        title: "选择房龄",
+        items: [
+          {
+            title: "满5",
+            value: "1"
+          },
+          {
+            title: "满2",
+            value: "2"
+          },
+          {
+            title: "不满2",
+            value: "3"
+          }
+        ]
+      });
+
+    $("#house_type").select({
+        title: "房屋类型",
+        items: [
+          {
+            title: "普通住宅",
+            value: "11"
+          },
+          {
+            title: "非普通住宅",
+            value: "12"
+          }
+        ]
+      });
+
+
+
+</script>
+
+
+{% endblock %}
